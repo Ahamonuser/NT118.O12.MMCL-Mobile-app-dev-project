@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,8 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     List<User> users = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,17 +29,19 @@ public class MainActivity extends AppCompatActivity {
 
         //Setup
         Button login = (Button)findViewById(R.id.login_btn);
-        Button signup = (Button)findViewById(R.id.signup_main_btn);
-        EditText username = (EditText)findViewById(R.id.username_main_txt);
-        EditText password = (EditText)findViewById(R.id.password_main_txt);
+        TextView signup = (TextView)findViewById(R.id.signup_login_btn);
+        EditText username = (EditText)findViewById(R.id.username_login_txt);
+        EditText password = (EditText)findViewById(R.id.password_login_txt);
 
         //When click button sign up
         signup.setOnClickListener(view -> {
-            Intent Signings = new Intent(MainActivity.this, SignupActivity.class);
+            Intent Signings = new Intent(LoginActivity.this, SignupActivity.class);
+            users.clear();
             startActivity(Signings);
         });
 
-        //Check if get user list successfully
+        //Check if get user list successfully -------------- NEED MAINTENANCE
+
         DatabaseReference userlistref;
         userlistref = FirebaseDatabase.getInstance().getReference();
         userlistref.child("User-list").get().addOnCompleteListener(task -> {
@@ -48,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                     User user = new User();
                     //user = userref.getValue(User.class);
                     //users.add(user);
+
                     Log.d("firebase", Objects.requireNonNull(userref.child("username").getValue()).toString());
                     user.username = Objects.requireNonNull(userref.child("username").getValue()).toString();
                     Log.d("firebase", Objects.requireNonNull(userref.child("password").getValue()).toString());
@@ -59,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
             else {
                 Toast.makeText(getApplicationContext(), "Error getting data.", Toast.LENGTH_SHORT).show();
             }
+        });
+
+        //When click back button
+        Button back = (Button)findViewById(R.id.back_login_btn);
+        back.setOnClickListener(view -> {
+            Intent Back = new Intent(LoginActivity.this, HomeActivity.class);
+            users.clear();
+            startActivity(Back);
         });
 
         //When click button login
@@ -73,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
                     User user = users.get(turn);
                     if(username.getText().toString().equals(user.username) && password.getText().toString().equals(user.password))
                     {
-                        Intent Logging = new Intent(MainActivity.this, SuccessActivityResult.class);
+                        Intent Logging = new Intent(LoginActivity.this, SuccessActivityResult.class);
+                        users.clear();
                         startActivity(Logging);
                         break;
                     }
@@ -87,5 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 }

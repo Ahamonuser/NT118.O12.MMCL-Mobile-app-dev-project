@@ -1,9 +1,12 @@
 package com.example.loginapptest;
 
 import android.app.AlertDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,6 +39,20 @@ public class SignupActivity extends AppCompatActivity {
             builder.setMessage("Sign up successfully, please return to login page.");
             builder.setPositiveButton("OK", (dialogInterface, i) -> dialogInterface.dismiss());
             builder.show();
+        });
+
+        //Get back to login page
+        TextView back = (TextView)findViewById(R.id.back_activity_btn);
+        back.setOnClickListener(view -> {
+            Intent backto = new Intent(SignupActivity.this, LoginActivity.class);
+            startActivity(backto);
+        });
+
+        //Back to homepage
+        Button backhomepage = (Button)findViewById(R.id.back_signup_btn);
+        backhomepage.setOnClickListener(view -> {
+            Intent backtohome = new Intent(SignupActivity.this, HomeActivity.class);
+            startActivity(backtohome);
         });
     }
 }
