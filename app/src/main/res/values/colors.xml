@@ -2,9 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="dark_green">#2E523B</color>
-    <color name="light_green">#8BC34A</color>
-    <color name="green">#27D71C</color>
+    <color name="dark_green">#2E4552</color>
+    <color name="light_green">#4AB9C3</color>
+    <color name="green">#1C70D7</color>
     <color name="yellow">#FFD7D71C</color>
     <color name="background">#2E2E3E</color>
     <color name="cards_background">#3B3A4F</color>

@@ -20,7 +20,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="507dp"
+            android:layout_height="472dp"
             android:layout_gravity="center_horizontal"
             android:background="@color/cards_background"
             android:orientation="vertical"
@@ -85,16 +85,17 @@
                 android:text="Sign Up"
                 android:textSize="25dp"
                 app:backgroundTint="@null" />
-
-            <Button
-                android:id="@+id/back_signup_btn"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/custom_green_color"
+            <!--            create back text view-->
+            <TextView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="Back"
-                android:textSize="25dp"
-                app:backgroundTint="@null" />
+                android:textColor="@color/green"
+                android:textSize="18sp"
+                android:textStyle="italic" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
