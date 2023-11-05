@@ -11,6 +11,8 @@
     android:background="@color/background"
     android:id="@+id/bg"
     tools:context=".LoginActivity">
+
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,6 +48,7 @@
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:hint="Username"
+                android:text="dsf"
                 android:padding="8dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background" />
@@ -76,7 +79,7 @@
                 app:backgroundTint="@null" />
 
             <TextView
-                android:id="@+id/back"
+                android:id="@+id/back_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

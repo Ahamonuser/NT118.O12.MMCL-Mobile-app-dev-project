@@ -1,5 +1,7 @@
 package com.example.loginapptest;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,16 +12,19 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import java.io.IOException;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity {
-    List<User> users = new ArrayList<>();
+    private static final String BASE_URL = "https://uiot.ixxc.dev/auth/realms/master/protocol/openid-connect/token";
+    String token = "";
 
 
     @Override
@@ -36,72 +41,68 @@ public class LoginActivity extends AppCompatActivity {
         //When click button sign up
         signup.setOnClickListener(view -> {
             Intent Signings = new Intent(LoginActivity.this, SignupActivity.class);
-            users.clear();
             startActivity(Signings);
         });
 
         //Check if get user list successfully -------------- NEED MAINTENANCE
 
-        DatabaseReference userlistref;
-        userlistref = FirebaseDatabase.getInstance().getReference();
-        userlistref.child("User-list").get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                for (DataSnapshot userref:task.getResult().getChildren())
-                {
-                    Log.d("firebase", Objects.requireNonNull(userref.getValue()).toString());
-                    User user = new User();
-                    //user = userref.getValue(User.class);
-                    //users.add(user);
-
-                    Log.d("firebase", Objects.requireNonNull(userref.child("username").getValue()).toString());
-                    user.username = Objects.requireNonNull(userref.child("username").getValue()).toString();
-                    Log.d("firebase", Objects.requireNonNull(userref.child("password").getValue()).toString());
-                    user.password = Objects.requireNonNull(userref.child("password").getValue()).toString();
-                    users.add(user);
-                }
-                Toast.makeText(getApplicationContext(), "Getting data completed.", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                Toast.makeText(getApplicationContext(), "Error getting data.", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         //When click back button
-        Button back = (Button)findViewById(R.id.back_login_btn);
-        back.setOnClickListener(view -> {
+        TextView back = (TextView) findViewById(R.id.back_login);
+        back.setOnClickListener(view -> { 
             Intent Back = new Intent(LoginActivity.this, HomeActivity.class);
-            users.clear();
             startActivity(Back);
         });
 
         //When click button login
         login.setOnClickListener(view -> {
-            if(username.getText().toString().equals("") || password.getText().toString().equals(""))
-            {
-                Toast.makeText(getApplicationContext(), "Username and password must be filled",Toast.LENGTH_SHORT).show();
-            }
-            else {
-                for (int turn = 0; turn < users.size(); turn++)
-                {
-                    User user = users.get(turn);
-                    if(username.getText().toString().equals(user.username) && password.getText().toString().equals(user.password))
-                    {
-                        Intent Logging = new Intent(LoginActivity.this, SuccessActivityResult.class);
-                        users.clear();
-                        startActivity(Logging);
-                        break;
-                    }
-                    else
-                    {
-                        if(turn == users.size() - 1)
-                        {
-                            Toast.makeText(getApplicationContext(), "Wrong Username or Password, please try again.",Toast.LENGTH_SHORT).show();
+                    String user = username.getText().toString();
+                    String pass = password.getText().toString();
+                    try {
+                        if (loginCheck(user, pass)) {
+                            Intent Login = new Intent(LoginActivity.this, HomeActivity.class);
+                            startActivity(Login);
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
                         }
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
-            }
-        });
+        );
 
+    }
+    private boolean loginCheck (String username, String password) throws IOException {
+        OkHttpClient client = new OkHttpClient();
 
+        // Create a new RequestBody instance with the request parameters.
+        RequestBody body = RequestBody.create(
+                MediaType.parse("application/x-www-form-urlencoded"),
+                "grant_type=password&username=" + username + "&password=" + password + "&client_id=openremote"
+        );
+
+        // Create a new Request instance.
+        Request request = new Request.Builder()
+                .url(BASE_URL)
+                .post(body)
+                .build();
+
+        // Execute the request and get the response.
+        Response response = client.newCall(request).execute();
+
+        // Check if the response was successful.
+        if (response.isSuccessful()) {
+            // Get the response body as a JSON object.
+            JsonObject json = new Gson().fromJson(response.body().string(), JsonObject.class);
+            // Get the access token from the JSON object.
+            token = json.get("access_token").getAsString();
+            Log.d("token", token);
+            return true;
+
+        } else {
+            // If something went wrong, show error message.
+            Toast.makeText(this, "Error: " + response.code() + " " + response.message(), Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 }

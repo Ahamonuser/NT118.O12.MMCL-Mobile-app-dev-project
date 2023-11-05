@@ -10,6 +10,12 @@
     android:gravity="center"
     android:background="@color/background"
     tools:context=".LoginActivity">
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="807dp"
+        android:visibility="gone"/>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,6 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
+                android:text="h"
                 android:background="@drawable/edit_text_custom"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
@@ -67,6 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
+                android:text="1"
                 android:background="@drawable/edit_text_custom"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
