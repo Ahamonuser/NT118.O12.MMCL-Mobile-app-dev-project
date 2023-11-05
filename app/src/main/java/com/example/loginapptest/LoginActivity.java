@@ -1,18 +1,16 @@
 package com.example.loginapptest;
 
-import static android.content.ContentValues.TAG;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.StrictMode;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.io.IOException;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -22,87 +20,89 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import java.io.IOException;
+
 public class LoginActivity extends AppCompatActivity {
     private static final String BASE_URL = "https://uiot.ixxc.dev/auth/realms/master/protocol/openid-connect/token";
     String token = "";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Setup
-        Button login = (Button)findViewById(R.id.login_btn);
-        TextView signup = (TextView)findViewById(R.id.signup_login_btn);
-        EditText username = (EditText)findViewById(R.id.username_login_txt);
-        EditText password = (EditText)findViewById(R.id.password_login_txt);
+        // Setup
+        Button login = findViewById(R.id.login_btn);
+        TextView signup = findViewById(R.id.signup_login_btn);
+        EditText username = findViewById(R.id.username_login_txt);
+        EditText password = findViewById(R.id.password_login_txt);
 
-        //When click button sign up
+        // When click button sign up
         signup.setOnClickListener(view -> {
             Intent Signings = new Intent(LoginActivity.this, SignupActivity.class);
             startActivity(Signings);
         });
 
-        //Check if get user list successfully -------------- NEED MAINTENANCE
-
-
-        //When click back button
-        TextView back = (TextView) findViewById(R.id.back_login);
-        back.setOnClickListener(view -> { 
+        // When click back button
+        TextView back = findViewById(R.id.back_login);
+        back.setOnClickListener(view -> {
             Intent Back = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(Back);
         });
 
-        //When click button login
-        login.setOnClickListener(view -> {
-                    String user = username.getText().toString();
-                    String pass = password.getText().toString();
-                    try {
-                        if (loginCheck(user, pass)) {
-                            Intent Login = new Intent(LoginActivity.this, HomeActivity.class);
-                            startActivity(Login);
-                        } else {
-                            Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
+        // When click button logi
+        login.setOnClickListener(view -> loginCheck(username.getText().toString(), password.getText().toString()));
+    }
+    @SuppressLint("StaticFieldLeak")
+    private void loginCheck( String username, String password) {
+        // Create a new AsyncTask to perform the network operation
+        new AsyncTask<Void, Void, Boolean>() {
+            @Override
+            protected Boolean doInBackground(Void... voids) {
+                // Perform the network operation here
+                OkHttpClient client = new OkHttpClient().newBuilder()
+                        .build();
+                MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
+                RequestBody body = RequestBody.create(mediaType, "grant_type=password&client_id=openremote&username=" + username + "&password=" + password);
+                Request request = new Request.Builder()
+                        .url("https://uiot.ixxc.dev/auth/realms/master/protocol/openid-connect/token")
+                        .method("POST", body)
+                        .addHeader("Content-Type", "application/x-www-form-urlencoded")
+                        .build();
+                try {
+                    Response response = client.newCall(request).execute();
+                    if (!response.isSuccessful()) {
+                        return false;
                     }
+                    String json = response.body().string();
+                    Gson gson = new Gson();
+                    JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
+                    token = jsonObject.get("access_token").getAsString();
+                    System.out.println(token);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return false;
                 }
-        );
+                // Return the result of the network operation
+                return true;
+            }
+
+            @Override
+            protected void onPostExecute(Boolean result) {
+                // Handle the result of the network operation here
+                if (result) {
+                    // The user logged in successfully
+                    Toast.makeText(LoginActivity.this, "Login success", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginActivity.this, SuccessActivityResult.class);
+                    startActivity(intent);
+                } else {
+                    // The user failed to log in
+                    Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        }.execute();
 
     }
-    private boolean loginCheck (String username, String password) throws IOException {
-        OkHttpClient client = new OkHttpClient();
 
-        // Create a new RequestBody instance with the request parameters.
-        RequestBody body = RequestBody.create(
-                MediaType.parse("application/x-www-form-urlencoded"),
-                "grant_type=password&username=" + username + "&password=" + password + "&client_id=openremote"
-        );
-
-        // Create a new Request instance.
-        Request request = new Request.Builder()
-                .url(BASE_URL)
-                .post(body)
-                .build();
-
-        // Execute the request and get the response.
-        Response response = client.newCall(request).execute();
-
-        // Check if the response was successful.
-        if (response.isSuccessful()) {
-            // Get the response body as a JSON object.
-            JsonObject json = new Gson().fromJson(response.body().string(), JsonObject.class);
-            // Get the access token from the JSON object.
-            token = json.get("access_token").getAsString();
-            Log.d("token", token);
-            return true;
-
-        } else {
-            // If something went wrong, show error message.
-            Toast.makeText(this, "Error: " + response.code() + " " + response.message(), Toast.LENGTH_SHORT).show();
-            return false;
-        }
-    }
 }
