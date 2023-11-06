@@ -31,6 +31,13 @@ public class SignupActivity extends AppCompatActivity {
         EditText confirm_password = (EditText)findViewById(R.id.confirm_password_activity_txt);
         WebView webview = findViewById(R.id.webview);
 
+        //Get back to login page
+        TextView back = (TextView)findViewById(R.id.back_activity_btn);
+        back.setOnClickListener(view -> {
+            Intent backto = new Intent(SignupActivity.this, LoginActivity.class);
+            startActivity(backto);
+        });
+
         //Add user
         signup.setOnClickListener(view -> {
             webview.setVisibility(webview.VISIBLE);
@@ -46,6 +53,7 @@ public class SignupActivity extends AppCompatActivity {
                     {
                         Log.d("My Webview", url);
                         Log.d("URL", "get fill form");
+
                         String user_script = "document.getElementById('username').value = '" + username.getText().toString() + "';";
                         String email_script = "document.getElementById('email').value = '" + email.getText().toString() + "';";
                         String pass_script = "document.getElementById('password').value = '" + password.getText().toString() + "';";
@@ -55,28 +63,27 @@ public class SignupActivity extends AppCompatActivity {
                         view.evaluateJavascript(pass_script, null);
                         view.evaluateJavascript(confirm_pass_script, null);
 
-                        view.evaluateJavascript("document.getElementById('kc-form-register').submit();", null);
+                        view.evaluateJavascript("document.getElementById('kc-register-form').submit();", null);
 
                         webview.setWebViewClient(new WebViewClient() {
                             @Override
                             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                                 // Here put your code
                                 Log.d("My Webview", url);
+
                                 webview.setVisibility(webview.GONE);
+                                Intent backto = new Intent(SignupActivity.this, LoginActivity.class);
+                                startActivity(backto);
                                 return true;
                             }
                         });
                     }
                 }
+
             });
         });
 
-        //Get back to login page
-        TextView back = (TextView)findViewById(R.id.back_activity_btn);
-        back.setOnClickListener(view -> {
-            Intent backto = new Intent(SignupActivity.this, LoginActivity.class);
-            startActivity(backto);
-        });
+
 
         //Back to homepage
         TextView backhomepage = (TextView) findViewById(R.id.back);
