@@ -6,7 +6,8 @@
     <color name="light_green">#4AB9C3</color>
     <color name="green">#1C70D7</color>
     <color name="yellow">#FFD7D71C</color>
-    <color name="background">#2E2E3E</color>
-    <color name="cards_background">#3B3A4F</color>
+    <color name="background">#FFFFFFFF</color>
+    <color name="cards_background">#FFFFFFFF</color>
     <color name="icon_off">#848184</color>
+    <color name="grey">#696969</color>
 </resources>

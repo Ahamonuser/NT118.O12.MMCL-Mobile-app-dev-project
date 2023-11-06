@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -50,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(Back);
         });
 
-        // When click button logi
+        // When click button login
         login.setOnClickListener(view -> loginCheck(username.getText().toString(), password.getText().toString()));
     }
     @SuppressLint("StaticFieldLeak")
@@ -79,6 +80,8 @@ public class LoginActivity extends AppCompatActivity {
                     JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
                     token = jsonObject.get("access_token").getAsString();
                     System.out.println(token);
+                    Log.d("token", token);
+
                 } catch (IOException e) {
                     e.printStackTrace();
                     return false;

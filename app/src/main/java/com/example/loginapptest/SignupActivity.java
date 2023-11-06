@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SignupActivity extends AppCompatActivity {
 
-    String signun_url = "https://uiot.ixxc.dev/auth/realms/master/login-actions/registration?client_id=openremote&tab_id=X32j8mzPTho";
+    String signun_url = "https://uiot.ixxc.dev";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,30 +27,45 @@ public class SignupActivity extends AppCompatActivity {
         Button signup = (Button)findViewById(R.id.signup_activity_btn);
         EditText username = (EditText)findViewById(R.id.username_activity_txt);
         EditText password = (EditText)findViewById(R.id.password_activity_txt);
-        EditText fullname = (EditText)findViewById(R.id.fullname_activity_txt);
-
+        EditText email = (EditText)findViewById(R.id.email_activity_txt);
+        EditText confirm_password = (EditText)findViewById(R.id.confirm_password_activity_txt);
         WebView webview = findViewById(R.id.webview);
-
 
         //Add user
         signup.setOnClickListener(view -> {
-
             webview.setVisibility(webview.VISIBLE);
             webview.loadUrl(signun_url);
             webview.getSettings().setJavaScriptEnabled(true);
             webview.setWebViewClient(new WebViewClient() {
+
                 public void onPageFinished(WebView view, String url) {
                     //Paste form to webview
+                    Log.d("My Webview", url);
                     if (url.contains("registration"))
                     {
+                        Log.d("My Webview", url);
                         Log.d("URL", "get fill form");
                         String user_script = "document.getElementById('username').value = '" + username.getText().toString() + "';";
+                        String email_script = "document.getElementById('email').value = '" + email.getText().toString() + "';";
                         String pass_script = "document.getElementById('password').value = '" + password.getText().toString() + "';";
+                        String confirm_pass_script = "document.getElementById('password-confirm').value = '" + confirm_password.getText().toString() + "';";
                         view.evaluateJavascript(user_script, null);
+                        view.evaluateJavascript(email_script, null);
                         view.evaluateJavascript(pass_script, null);
-                        view.evaluateJavascript("document.getElementById('kc-form-register').submit();", null);
-                    }
+                        view.evaluateJavascript(confirm_pass_script, null);
 
+                        view.evaluateJavascript("document.getElementById('kc-form-register').submit();", null);
+
+                        webview.setWebViewClient(new WebViewClient() {
+                            @Override
+                            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                                // Here put your code
+                                Log.d("My Webview", url);
+                                webview.setVisibility(webview.GONE);
+                                return true;
+                            }
+                        });
+                    }
                 }
             });
         });
@@ -69,4 +84,5 @@ public class SignupActivity extends AppCompatActivity {
             startActivity(backtohome);
         });
     }
+
 }
