@@ -41,6 +41,7 @@ public class SignupActivity extends AppCompatActivity {
                 public void onPageFinished(WebView view, String url) {
                     //Paste form to webview
                     Log.d("My Webview", url);
+                    view.evaluateJavascript("document.querySelector('a.btn.waves-effect.waves-light').click();", null);
                     if (url.contains("registration"))
                     {
                         Log.d("My Webview", url);
