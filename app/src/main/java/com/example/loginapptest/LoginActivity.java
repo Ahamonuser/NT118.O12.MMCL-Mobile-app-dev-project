@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -79,8 +78,6 @@ public class LoginActivity extends AppCompatActivity {
                     Gson gson = new Gson();
                     JsonObject jsonObject = gson.fromJson(json, JsonObject.class);
                     token = jsonObject.get("access_token").getAsString();
-                    System.out.println(token);
-                    Log.d("token", token);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -97,6 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                     // The user logged in successfully
                     Toast.makeText(LoginActivity.this, "Login success", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, SuccessActivityResult.class);
+                    intent.putExtra("token",token);
                     startActivity(intent);
                 } else {
                     // The user failed to log in

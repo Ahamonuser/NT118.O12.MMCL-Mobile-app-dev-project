@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GraphFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/sub_color"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/relative1"
+            android:layout_width="match_parent"
+            android:layout_height="82dp">
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="53dp"
+                android:layout_height="53dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="21dp"
+                app:srcCompat="@drawable/img" />
+            <TextView
+                android:id="@+id/hello"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="89dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="160dp"
+                android:layout_toRightOf="@id/avatar"
+                android:gravity="center"
+                android:text="Hello,A"
+                android:textColor="@color/white"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/Logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="89dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="160dp"
+                android:layout_toRightOf="@id/hello"
+                android:text="[Logout]"
+                android:textColor="@color/pink"
+                android:textSize="20dp"
+                android:textStyle="bold"
+
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/Chart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:text="Chart"
+            android:textColor="@color/white"
+            android:textSize="40dp"
+            />
+
+        <TextView
+            android:id="@+id/txtView_AssetName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Chart"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="5dp"
+            android:textStyle="bold"
+            android:text="Select Asset Name"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Chart"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Spinner
+            android:id="@+id/txt_AssetName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/txtView_AssetName"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp"
+            android:background="@color/main_color"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"></Spinner>
+
+        <TextView
+            android:id="@+id/txtView_Attribute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_AssetName"
+            android:layout_marginTop="9dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="5dp"
+            android:textStyle="bold"
+            android:text="Select Attribute"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtView_AssetName" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/txt_AttributeName"
+            android:layout_height="50dp"
+            android:layout_below="@id/txtView_Attribute"
+            android:background="@color/main_color"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:text="temperature"
+            android:hint="Attribute Name here"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp"
+            ></EditText>
+
+        <TextView
+            android:id="@+id/txtView_Start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_AttributeName"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="5dp"
+            android:text="Start time"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtView_Attribute" />
+
+
+        <EditText
+            android:layout_width="180dp"
+            android:id="@+id/txt_Start"
+            android:layout_height="60dp"
+            android:layout_below="@id/txtView_Start"
+            android:background="@color/main_color"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:text="2023-12-07T12:00:00"
+            android:hint="yyyy-mm-ddThh:MM:ss"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp"
+            ></EditText>
+
+        <TextView
+            android:id="@+id/txtView_End"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_AttributeName"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="204dp"
+            android:text="End"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtView_Attribute" />
+
+        <EditText
+            android:layout_width="180dp"
+            android:id="@+id/txt_End"
+            android:layout_height="60dp"
+            android:layout_below="@id/txtView_End"
+            android:background="@color/main_color"
+            android:padding="8dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:text="2023-12-08T12:00:00"
+            android:hint="yyyy-mm-ddThh:MM:ss"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="30dp"
+            ></EditText>
+
+
+
+        <Button
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:id="@+id/btn_Chart"
+            android:layout_below="@id/txt_Start"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="25dp"
+            android:gravity="center_vertical|center_horizontal"
+
+            android:text="Show"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="25dp" />
+
+    </RelativeLayout>
+
+</FrameLayout>

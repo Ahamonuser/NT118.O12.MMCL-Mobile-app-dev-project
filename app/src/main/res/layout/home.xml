@@ -26,7 +26,7 @@
         android:layout_marginTop="20dp"
         android:text="Welcome to App"
         android:textAlignment="center"
-        android:textColor="@color/green"
+        android:textColor="@color/blue"
         android:textSize="30dp"
         android:textStyle="bold" />
 
@@ -63,7 +63,7 @@
                 android:layout_marginTop="25dp"
                 android:text="------------------- or ------------------"
                 android:textAlignment="center"
-                android:textColor="@color/green"
+                android:textColor="@color/blue"
                 android:textSize="24dp" />
 
             <Button

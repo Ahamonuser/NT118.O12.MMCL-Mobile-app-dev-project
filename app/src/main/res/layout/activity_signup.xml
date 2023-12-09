@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:text="Sign Up"
                 android:textAlignment="center"
-                android:textColor="@color/green"
+                android:textColor="@color/blue"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
@@ -114,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Back"
-                android:textColor="@color/green"
+                android:textColor="@color/blue"
                 android:textSize="18sp"
                 android:textStyle="italic" />
 
@@ -129,6 +129,6 @@
         android:padding="8dp"
         android:text="Already have an account? Login Now"
         android:textAlignment="center"
-        android:textColor="@color/green"
+        android:textColor="@color/blue"
         android:textSize="14sp" />
 </LinearLayout>

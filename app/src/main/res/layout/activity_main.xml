@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:text="Login"
                 android:textAlignment="center"
-                android:textColor="@color/green"
+                android:textColor="@color/blue"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
@@ -48,7 +48,7 @@
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:hint="Username"
-                android:text="dsf"
+                android:text="user"
                 android:padding="8dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background" />
@@ -62,6 +62,7 @@
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
                 android:hint="Password"
+                android:text="123"
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:textColor="@color/black"
@@ -84,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Back"
-                android:textColor="@color/green"
+                android:textColor="@color/blue"
                 android:textSize="18sp"
                 android:textStyle="italic"
                 />
@@ -102,6 +103,6 @@
         android:padding="8dp"
         android:text="Not yet registered? SignUp Now"
         android:textAlignment="center"
-        android:textColor="@color/green"
+        android:textColor="@color/blue"
         android:textSize="14sp" />
 </LinearLayout>

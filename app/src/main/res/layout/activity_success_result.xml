@@ -1,32 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".SuccessActivityResult">
+    android:orientation="vertical"
+    android:background="@color/main_color">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/FL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/NavigationView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="40dp"
-        android:lines="2"
-        android:text="LOGIN SUCCESSFULLY!!! \nHere is the list of users:"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ListView
-        android:id="@+id/user_list"
-        android:layout_width="wrap_content"
-        android:layout_height="610dp"
-        android:layout_marginTop="22dp"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:background="@drawable/nav_bar"
+        app:itemIconTint="@drawable/bottom_nav_higlight"
+        app:itemTextColor="@drawable/bottom_nav_higlight"
+        app:labelVisibilityMode="labeled"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/menu_bottom_nav" />
+</RelativeLayout>

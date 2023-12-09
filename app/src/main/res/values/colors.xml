@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="red">#FFD71C1C</color>
     <color name="white">#FFFFFFFF</color>
     <color name="dark_green">#2E4552</color>
-    <color name="light_green">#4AB9C3</color>
-    <color name="green">#1C70D7</color>
+    <color name="light_blue">#4AB9C3</color>
+    <color name="blue">#1C70D7</color>
     <color name="yellow">#FFD7D71C</color>
     <color name="background">#FFFFFFFF</color>
+    <color name="green">#27D71C</color>
     <color name="cards_background">#FFFFFFFF</color>
     <color name="icon_off">#848184</color>
     <color name="grey">#696969</color>
+    <color name="pink">#ff1493</color>
+    <color name="gray">#848184</color>
+    <color name="main_color">#44455C</color>
+    <color name="sub_color">#2E2E3E</color>
+    <style name="TextAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+    </style>
 </resources>

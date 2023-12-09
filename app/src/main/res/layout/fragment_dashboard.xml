@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DashboardFragment">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/sub_color"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/relative1"
+                android:layout_width="match_parent"
+                android:layout_height="82dp">
+
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="53dp"
+                    android:layout_height="53dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="21dp"
+                    app:srcCompat="@drawable/img" />
+
+                <TextView
+                    android:id="@+id/hello"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="89dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="160dp"
+                    android:layout_toRightOf="@id/avatar"
+                    android:gravity="center"
+                    android:text="Hello,A"
+                    android:textColor="@color/white"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/Logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="89dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="160dp"
+                    android:layout_toRightOf="@id/hello"
+                    android:text="[Logout]"
+                    android:textColor="@color/pink"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/Asset1"
+                android:layout_width="match_parent"
+                android:layout_height="202dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/graph"
+                android:layout_below="@id/relative1">
+
+                <TextView
+                    android:id="@+id/WeatherAsset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Weather Asset"
+                    android:textColor="@color/green"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="215dp"
+                    android:layout_marginTop="50dp"
+                    android:text="AQI"
+                    android:textColor="@color/pink"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/AQI"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="220dp"
+                    android:layout_marginTop="80dp"
+                    android:text="null"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="330dp"
+                    android:layout_marginTop="50dp"
+                    android:text="PM10"
+                    android:textColor="@color/pink"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/PM10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="345dp"
+                    android:layout_marginTop="80dp"
+                    android:text="null"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="57dp"
+                    android:layout_marginTop="130dp"
+                    android:text="CO2"
+                    android:textColor="@color/pink"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/CO2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginTop="160dp"
+                    android:text="null"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="160dp"
+                    android:layout_marginTop="130dp"
+                    android:text="AQI prediction"
+                    android:textColor="@color/pink"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/AQI_pre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="220dp"
+                    android:layout_marginTop="160dp"
+                    android:text="null"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="330dp"
+                    android:layout_marginTop="130dp"
+                    android:text="PM25"
+                    android:textColor="@color/pink"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/PM25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="345dp"
+                    android:layout_marginTop="160dp"
+                    android:text="null"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="50dp"
+                    android:text="Humidity(%)"
+                    android:textColor="@color/pink"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/Humidity_WAsset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginTop="80dp"
+                    android:text="null"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/Asset2"
+                android:layout_width="412dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/graph"
+                android:layout_below="@id/Asset1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="10dp"
+                    android:text="DHT11 Asset"
+                    android:textColor="@color/green"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="50dp"
+                    android:text="Humidity(%)"
+                    android:textColor="@color/pink"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/Humidity_DHT11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="80dp"
+                    android:text="null"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="240dp"
+                    android:layout_marginTop="50dp"
+                    android:text="Temperature(C)"
+                    android:textColor="@color/pink"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/Temperature_DHT11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="290dp"
+                    android:layout_marginTop="80dp"
+                    android:text="null"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/Asset3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Asset2"
+                android:layout_marginBottom="100dp"
+                android:background="@drawable/graph"
+                app:layout_constraintVertical_bias="1.0">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Default Weather"
+                    android:textColor="@color/green"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="50dp"
+                    android:text="Humidity(%)"
+                    android:textColor="@color/pink"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/Humidity_Def"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="80dp"
+                    android:text="null"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="240dp"
+                    android:layout_marginTop="50dp"
+                    android:text="Temperature(C)"
+                    android:textColor="@color/pink"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/Temperature_Def"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="290dp"
+                    android:layout_marginTop="80dp"
+                    android:text="null"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="115dp"
+                    android:text="Place"
+                    android:textColor="@color/pink"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/Place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="145dp"
+                    android:text="null"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="260dp"
+                    android:layout_marginTop="115dp"
+                    android:text="Rainfall(mm)"
+                    android:textColor="@color/pink"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/Rainfall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="290dp"
+                    android:layout_marginTop="145dp"
+                    android:text="null"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="175dp"
+                    android:text="Wind speed(km/h)"
+                    android:textColor="@color/pink"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/Windspeed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="205dp"
+                    android:text="null"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="240dp"
+                    android:layout_marginTop="175dp"
+                    android:text="Wind direction"
+                    android:textColor="@color/pink"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/Winddirection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="290dp"
+                    android:layout_marginTop="205dp"
+                    android:text="null"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+            </RelativeLayout>
+        </RelativeLayout>
+</FrameLayout>
