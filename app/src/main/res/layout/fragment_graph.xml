@@ -27,6 +27,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="21dp"
                 app:srcCompat="@drawable/img" />
+
             <TextView
                 android:id="@+id/hello"
                 android:layout_width="wrap_content"
@@ -36,7 +37,7 @@
                 android:layout_marginEnd="160dp"
                 android:layout_toRightOf="@id/avatar"
                 android:gravity="center"
-                android:text="Hello,A"
+                android:text="@string/Hello_user"
                 android:textColor="@color/white"
                 android:textSize="25dp" />
 
@@ -44,16 +45,15 @@
                 android:id="@+id/Logout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="89dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="10dp"
                 android:layout_marginTop="30dp"
-                android:layout_marginEnd="160dp"
-                android:layout_toRightOf="@id/hello"
-                android:text="[Logout]"
+                android:text="@string/Log_Out"
                 android:textColor="@color/pink"
                 android:textSize="20dp"
                 android:textStyle="bold"
-
                 />
+
         </RelativeLayout>
 
         <TextView
@@ -65,7 +65,7 @@
             android:layout_marginTop="30dp"
             android:textAllCaps="true"
             android:textStyle="bold"
-            android:text="Chart"
+            android:text="@string/chart"
             android:textColor="@color/white"
             android:textSize="40dp"
             />
@@ -79,7 +79,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginBottom="5dp"
             android:textStyle="bold"
-            android:text="Select Asset Name"
+            android:text="@string/select_asset_name"
             android:textColor="@color/white"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -109,7 +109,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginBottom="5dp"
             android:textStyle="bold"
-            android:text="Select Attribute"
+            android:text="@string/select_attribute"
             android:textColor="@color/white"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -126,7 +126,7 @@
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:text="temperature"
-            android:hint="Attribute Name here"
+            android:hint="@string/Attribute_hint"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="15dp"
@@ -140,7 +140,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="5dp"
-            android:text="Start time"
+            android:text="@string/start_time"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="16dp"
@@ -173,7 +173,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="204dp"
-            android:text="End"
+            android:text="@string/end_time"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="16dp"
@@ -200,7 +200,7 @@
 
 
         <Button
-            android:layout_width="130dp"
+            android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:id="@+id/btn_Chart"
             android:layout_below="@id/txt_Start"
@@ -209,8 +209,7 @@
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="25dp"
             android:gravity="center_vertical|center_horizontal"
-
-            android:text="Show"
+            android:text="@string/Show_graph"
             android:textStyle="bold"
             android:textAllCaps="true"
             android:textAlignment="center"

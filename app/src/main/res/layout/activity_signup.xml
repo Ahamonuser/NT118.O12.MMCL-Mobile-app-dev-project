@@ -26,7 +26,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="472dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:background="@color/cards_background"
             android:orientation="vertical"
@@ -36,7 +36,7 @@
                 android:id="@+id/loginText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sign Up"
+                android:text="@string/SignUp"
                 android:textAlignment="center"
                 android:textColor="@color/blue"
                 android:textSize="36sp"
@@ -52,7 +52,7 @@
                 android:background="@drawable/edit_text_custom"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
-                android:hint="Username"
+                android:hint="@string/Username"
                 android:padding="8dp"
                 android:textColor="@color/black"
                 android:textColorHighlight="@color/cardview_dark_background" />
@@ -78,7 +78,7 @@
                 android:background="@drawable/edit_text_custom"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
-                android:hint="Password"
+                android:hint="@string/Password"
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:textColor="@color/black"
@@ -92,7 +92,7 @@
                 android:background="@drawable/edit_text_custom"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
-                android:hint="Confirm Password"
+                android:hint="@string/Confirm_Password"
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:textColor="@color/black"
@@ -104,16 +104,16 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/custom_green_color"
-                android:text="Sign Up"
+                android:text="@string/SignUp"
                 android:textSize="25dp"
                 app:backgroundTint="@null" />
-            <!--            create back text view-->
+
             <TextView
                 android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Back"
+                android:text="@string/Back"
                 android:textColor="@color/blue"
                 android:textSize="18sp"
                 android:textStyle="italic" />
@@ -127,7 +127,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:padding="8dp"
-        android:text="Already have an account? Login Now"
+        android:text="@string/RegistertoLogin"
         android:textAlignment="center"
         android:textColor="@color/blue"
         android:textSize="14sp" />

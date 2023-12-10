@@ -215,7 +215,7 @@ public class DashboardFragment extends Fragment {
             Log.d("Weather Asset", "PM10: " + PM10);
             Log.d("Weather Asset", "PM25: " + PM25);
         }
-        else //DHT11 Asset
+        else if (object.get("name").getAsString().equals("DHT11 Asset")) //DHT11 Asset
         {
             JsonObject temperature_att = attribute.get("temperature").getAsJsonObject();
             JsonObject humidity_att = attribute.get("humidity").getAsJsonObject();
@@ -227,8 +227,6 @@ public class DashboardFragment extends Fragment {
             txt_humidity.setText(valueOf(humidity));
             Log.d("DHT11 Asset", "temperature: " + temperature + " °C");
             Log.d("DHT11 Asset", "humidity: " + humidity + " %");
-
         }
     }
-
 }

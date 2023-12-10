@@ -40,7 +40,7 @@ public class SignupActivity extends AppCompatActivity {
 
         //Add user
         signup.setOnClickListener(view -> {
-            webview.setVisibility(webview.VISIBLE);
+            webview.setVisibility(webview.GONE);
             webview.loadUrl(signun_url);
             webview.getSettings().setJavaScriptEnabled(true);
             webview.setWebViewClient(new WebViewClient() {

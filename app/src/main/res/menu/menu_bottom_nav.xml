@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:title="Map"
+        android:title="@string/Map"
         android:icon="@drawable/baseline_home_24"
         android:id="@+id/map"/>
     <item
-        android:title="Graph"
+        android:title="@string/Graph"
         android:icon="@drawable/baseline_auto_graph_24"
         android:id="@+id/graph"/>
     <item
-        android:title="Dashboard"
+        android:title="@string/Dashboard"
         android:icon="@drawable/baseline_dashboard_24"
         android:id="@+id/dashboard"/>
     <item
-        android:title="User"
+        android:title="@string/User"
         android:icon="@drawable/baseline_account_circle_24"
         android:id="@+id/user"/>
 </menu>

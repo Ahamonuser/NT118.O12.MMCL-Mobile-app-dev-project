@@ -4,8 +4,6 @@ public class ValueEntry {
 
     public long x;
 
-    public int y_int;
-
     public float y_float;
 
     public ValueEntry(long x, float y_float)

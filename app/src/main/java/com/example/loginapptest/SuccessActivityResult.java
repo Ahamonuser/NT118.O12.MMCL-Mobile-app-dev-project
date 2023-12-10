@@ -9,7 +9,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -54,17 +57,8 @@ import okhttp3.Response;
 public class SuccessActivityResult extends AppCompatActivity {
 
     BottomNavigationView navigation;
-
-    private LineChart chart;
-    String Root_Frag = "root_fagment";
     ArrayList<String> IDArrayList = new ArrayList<>();
     String token = "";
-
-    MapFragment mapFragment = new MapFragment();
-    GraphFragment graphFragment = new GraphFragment();
-    DashboardFragment dashboardFragment = new DashboardFragment();
-    UserFragment userFragment = new UserFragment();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +80,6 @@ public class SuccessActivityResult extends AppCompatActivity {
         navigation.setSelectedItemId(R.id.map);
         navigation.setOnItemSelectedListener(this::onNavigationItemSelected);
     }
-
 
     public boolean onNavigationItemSelected(@Nullable MenuItem item) {
         boolean result = false;
@@ -278,7 +271,7 @@ public class SuccessActivityResult extends AppCompatActivity {
             Timestamp timestamp = ConverteSecondstoTime(time);
             databaseHelper.insertWEATHER(AQI, AQI_Predict, CO2, humidity, PM10, PM25, timestamp.toString());
         }
-        else //DHT11 Asset
+        else if (object.get("name").getAsString().equals("DHT11 Asset")) //DHT11 Asset
         {
             JsonObject temperature_att = attribute.get("temperature").getAsJsonObject();
             JsonObject humidity_att = attribute.get("humidity").getAsJsonObject();
@@ -298,6 +291,4 @@ public class SuccessActivityResult extends AppCompatActivity {
         timestamp.setTime(timestamp.getTime() + TimeZone.getTimeZone("UTC+7").getRawOffset());
         return timestamp;
     }
-
-
 }

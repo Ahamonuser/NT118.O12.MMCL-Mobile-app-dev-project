@@ -37,7 +37,7 @@
                     android:layout_marginEnd="160dp"
                     android:layout_toRightOf="@id/avatar"
                     android:gravity="center"
-                    android:text="Hello,A"
+                    android:text="@string/Hello_user"
                     android:textColor="@color/white"
                     android:textSize="25dp" />
 
@@ -47,9 +47,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="89dp"
                     android:layout_marginTop="30dp"
-                    android:layout_marginEnd="160dp"
-                    android:layout_toRightOf="@id/hello"
-                    android:text="[Logout]"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/Log_Out"
                     android:textColor="@color/pink"
                     android:textSize="20dp"
                     android:textStyle="bold"
@@ -138,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="160dp"
                     android:layout_marginTop="130dp"
-                    android:text="AQI prediction"
+                    android:text="@string/AQI_pre"
                     android:textColor="@color/pink"
                     android:textSize="20dp" />
 
@@ -176,7 +176,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="50dp"
-                    android:text="Humidity(%)"
+                    android:text="@string/Humidity"
                     android:textColor="@color/pink"
                     android:textSize="20dp" />
 
@@ -215,7 +215,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="50dp"
-                    android:text="Humidity(%)"
+                    android:text="@string/Humidity"
                     android:textColor="@color/pink"
                     android:textSize="20dp" />
 
@@ -234,7 +234,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="240dp"
                     android:layout_marginTop="50dp"
-                    android:text="Temperature(C)"
+                    android:text="@string/Temperature"
                     android:textColor="@color/pink"
                     android:textSize="20dp" />
 
@@ -273,7 +273,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="50dp"
-                    android:text="Humidity(%)"
+                    android:text="@string/Humidity"
                     android:textColor="@color/pink"
                     android:textSize="20dp" />
 
@@ -292,7 +292,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="240dp"
                     android:layout_marginTop="50dp"
-                    android:text="Temperature(C)"
+                    android:text="@string/Temperature"
                     android:textColor="@color/pink"
                     android:textSize="20dp" />
 
@@ -311,7 +311,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="60dp"
                     android:layout_marginTop="115dp"
-                    android:text="Place"
+                    android:text="@string/Place"
                     android:textColor="@color/pink"
                     android:textSize="20dp" />
 
@@ -330,7 +330,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="260dp"
                     android:layout_marginTop="115dp"
-                    android:text="Rainfall(mm)"
+                    android:text="@string/Rainfall"
                     android:textColor="@color/pink"
                     android:textSize="20dp" />
 
@@ -349,7 +349,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
                     android:layout_marginTop="175dp"
-                    android:text="Wind speed(km/h)"
+                    android:text="@string/Wind_Speed"
                     android:textColor="@color/pink"
                     android:textSize="20dp" />
 
@@ -369,7 +369,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="240dp"
                     android:layout_marginTop="175dp"
-                    android:text="Wind direction"
+                    android:text="@string/Wind_Direction"
                     android:textColor="@color/pink"
                     android:textSize="20dp" />
 
