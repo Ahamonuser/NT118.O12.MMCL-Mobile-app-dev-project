@@ -43,7 +43,8 @@
             android:value="YOUR_API_KEY" />
 
         <activity
-            android:name=".HomeActivity"
+            android:name=".SplashScreen"
+            android:theme="@style/Theme.Design.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,8 +53,12 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignupActivity"
             android:exported="false" />
+
         <activity
             android:name=".SuccessActivityResult"
             android:exported="false" />

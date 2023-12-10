@@ -86,7 +86,7 @@ public class SignupActivity extends AppCompatActivity {
 
 
         //Back to homepage
-        TextView backhomepage = (TextView) findViewById(R.id.back);
+        TextView backhomepage = (TextView) findViewById(R.id.back_btn);
         backhomepage.setOnClickListener(view -> {
             Intent backtohome = new Intent(SignupActivity.this, HomeActivity.class);
             startActivity(backtohome);

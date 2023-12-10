@@ -51,6 +51,7 @@
             android:layout_below="@id/relative1"
             android:background="@color/main_color"
             android:layout_marginTop="35dp"
+            android:textColorHint="@color/white"
             app:hintTextAppearance="@style/TextAppearance"
             >
 
@@ -73,6 +74,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/Username"
             android:background="@color/main_color"
+            android:textColorHint="@color/white"
             android:layout_marginTop="35dp"  >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -96,6 +98,7 @@
             android:layout_marginTop="35dp"
             android:layout_marginLeft="20dp"
             android:layout_alignParentLeft="true"
+            android:textColorHint="@color/white"
             android:background="@color/main_color" >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -120,6 +123,7 @@
             android:layout_below="@id/Email"
             android:layout_toRightOf="@id/firstN"
             android:background="@color/main_color"
+            android:textColorHint="@color/white"
             android:layout_marginTop="35dp"  >
 
             <com.google.android.material.textfield.TextInputEditText
