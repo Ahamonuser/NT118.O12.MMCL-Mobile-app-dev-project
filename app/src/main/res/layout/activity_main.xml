@@ -8,14 +8,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/sub_color"
+    android:background="@drawable/image"
     android:id="@+id/bg"
     tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="249dp"
-        android:layout_height="209dp"
+        android:layout_width="246dp"
+        android:layout_height="202dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/icon" />
 
