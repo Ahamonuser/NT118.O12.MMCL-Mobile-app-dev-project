@@ -30,29 +30,25 @@
 
             <TextView
                 android:id="@+id/hello"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="89dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="160dp"
                 android:layout_toRightOf="@id/avatar"
-                android:gravity="center"
                 android:text="@string/Hello_user"
                 android:textColor="@color/white"
-                android:textSize="25dp" />
+                android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/Logout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/Logout_Graph"
+                android:layout_width="64dp"
+                android:layout_height="43dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginEnd="10dp"
+                android:layout_marginLeft="89dp"
                 android:layout_marginTop="30dp"
-                android:text="@string/Log_Out"
-                android:textColor="@color/pink"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                />
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/logout_3_svgrepo_com" />
 
         </RelativeLayout>
 
@@ -197,15 +193,13 @@
             android:layout_marginRight="30dp"
             ></EditText>
 
-
-
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:id="@+id/btn_Chart"
             android:layout_below="@id/txt_Start"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="60dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="25dp"
             android:gravity="center_vertical|center_horizontal"

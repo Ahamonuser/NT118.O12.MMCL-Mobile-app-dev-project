@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 public class GraphFragment extends Fragment {
@@ -45,6 +46,7 @@ public class GraphFragment extends Fragment {
         EditText AttributeName = (EditText) v.findViewById(R.id.txt_AttributeName);
         EditText start = (EditText) v.findViewById(R.id.txt_Start);
         EditText end = (EditText) v.findViewById(R.id.txt_End);
+        ImageView logout = (ImageView) v.findViewById(R.id.Logout_Graph);
         String[] AssetNameList = {"DHT11 Asset", "Default Weather", "Weather Asset"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(v.getContext(), R.layout.custom_spinner_item, AssetNameList);
         AssetName.setAdapter(adapter);
@@ -67,6 +69,12 @@ public class GraphFragment extends Fragment {
                 intent.putExtra("start", start.getText().toString());
                 intent.putExtra("end", end.getText().toString());
                 startActivity(intent);
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                getActivity().finish();
             }
         });
         return v;

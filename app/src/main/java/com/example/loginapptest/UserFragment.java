@@ -42,10 +42,6 @@ public class UserFragment extends Fragment {
 
     JsonObject jsonObjectUser = new JsonObject();
 
-    static String selectedLanguage = "Language";
-
-    String[] LanguageList = {selectedLanguage, "English", "Tiếng Việt"};
-
     public UserFragment() {
         // Required empty public constructor
     }
@@ -62,38 +58,8 @@ public class UserFragment extends Fragment {
         View v =  inflater.inflate(R.layout.fragment_user, container, false);
         // Lấy token từ bundle
         token = getArguments().getString("token");
-        Spinner language = (Spinner) v.findViewById(R.id.languages);
         Button signout = (Button) v.findViewById(R.id.SignOut);
         Log.d("User", token);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(v.getContext(), R.layout.custom_spinner_item, LanguageList);
-        language.setAdapter(adapter);
-        language.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id){
-                selectedLanguage = language.getSelectedItem().toString();
-                if (selectedLanguage.equals("Language") || selectedLanguage.equals("Ngôn ngữ"))
-                {
-
-                }
-                else if (selectedLanguage.equals("English"))
-                {
-                    setLocated("en");
-                    Log.d("User", "English");
-                    language.setSelection(1);
-                }
-                else if (selectedLanguage.equals("Tiếng Việt"))
-                {
-                    setLocated("vi");
-                    Log.d("User", "Tiếng Việt");
-                    language.setSelection(2);
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent){
-            }
-        });
-
         Call_API_User();
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,18 +72,7 @@ public class UserFragment extends Fragment {
         return v;
     }
 
-    private void setLocated(String lang){
-        Resources resources = getActivity().getBaseContext().getResources();
-        DisplayMetrics metrics = resources.getDisplayMetrics();
-        Configuration config = resources.getConfiguration();
-        Locale locale = new Locale(lang);
-        config.setLocale(locale);
-        Locale.setDefault(locale);
-        resources.updateConfiguration(config, metrics);
-        SharedPreferences.Editor editor = getActivity().getSharedPreferences("Settings", MODE_PRIVATE).edit();
-        editor.putString("My_Lang", lang);
-        editor.apply();
-    }
+
 
     @SuppressLint("StaticFieldLeak")
     private void Call_API_User() {

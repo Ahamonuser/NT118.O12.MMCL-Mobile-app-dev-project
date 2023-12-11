@@ -22,12 +22,12 @@
     <string name="Last_Name">Last Name</string>
     <string name="Language">Language</string>
     <string name="Log_Out">[Sign Out]</string>
-    <string name="Humidity">Humidity(%)</string>
-    <string name="Temperature">Temperature(°C)</string>
+    <string name="Humidity_dash">Humidity(%)</string>
+    <string name="Temperature_dash">Temperature(°C)</string>
     <string name="AQI_pre">AQI prediction</string>
     <string name="Place">Place</string>
-    <string name="Rainfall">Rainfall(mm)</string>
-    <string name="Wind_Speed">Wind speed(km/h)</string>
+    <string name="Rainfall_dash">Rainfall(mm)</string>
+    <string name="Wind_Speed_dash">Wind speed(km/h)</string>
     <string name="Wind_Direction">Wind direction</string>
     <string name="chart">Chart</string>
     <string name="select_asset_name">Select Asset Name</string>
@@ -36,4 +36,17 @@
     <string name="start_time">Start Time</string>
     <string name="end_time">End Time</string>
     <string name="Show_graph">SHOW GRAPH</string>
+    <string name="Choose_lang">Choose language</string>
+    <string name="English">English</string>
+    <string name="Vietnamese">Vietnamese</string>
+    <string name="LoginFail">Login failed</string>
+    <string name="LoginSuccess">Login successfully</string>
+    <string name="Temperature">Temperature</string>
+    <string name="Humidity">Humidity</string>
+    <string name="Rainfall">Rainfall</string>
+    <string name="Wind_Speed">Wind Speed</string>
+    <string name="Brightness">Brightness(%)</string>
+    <string name="Colour_Temperature">Colour Temperature(K)</string>
+    <string name="On_Off">On/Off</string>
+    <string name="More">More>>></string>
 </resources>

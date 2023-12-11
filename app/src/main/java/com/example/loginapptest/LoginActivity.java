@@ -2,8 +2,12 @@ package com.example.loginapptest;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +25,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 import java.io.IOException;
+import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String BASE_URL = "https://uiot.ixxc.dev/auth/realms/master/protocol/openid-connect/token";
@@ -30,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        loadLocale();
 
         // Setup
         Button login = findViewById(R.id.login_btn);
@@ -44,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         // When click back button
-        TextView back = findViewById(R.id.back_btn);
+        TextView back = findViewById(R.id.back_login);
         back.setOnClickListener(view -> {
             Intent Back = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(Back);
@@ -53,6 +59,26 @@ public class LoginActivity extends AppCompatActivity {
         // When click button login
         login.setOnClickListener(view -> loginCheck(username.getText().toString(), password.getText().toString()));
     }
+
+    private void loadLocale(){
+        SharedPreferences prefs = this.getSharedPreferences("Settings", MODE_PRIVATE);
+        String language = prefs.getString("My_Lang", "");
+        setLocated(language);
+    }
+
+    private void setLocated(String lang){
+        Resources resources = this.getBaseContext().getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        Configuration config = resources.getConfiguration();
+        Locale locale = new Locale(lang);
+        config.setLocale(locale);
+        Locale.setDefault(locale);
+        resources.updateConfiguration(config, metrics);
+        SharedPreferences.Editor editor = this.getSharedPreferences("Settings", MODE_PRIVATE).edit();
+        editor.putString("My_Lang", lang);
+        editor.apply();
+    }
+
     @SuppressLint("StaticFieldLeak")
     private void loginCheck( String username, String password) {
         // Create a new AsyncTask to perform the network operation
@@ -92,18 +118,16 @@ public class LoginActivity extends AppCompatActivity {
                 // Handle the result of the network operation here
                 if (result) {
                     // The user logged in successfully
-                    Toast.makeText(LoginActivity.this, "Login success", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, R.string.LoginSuccess, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, SuccessActivityResult.class);
                     intent.putExtra("token",token);
                     startActivity(intent);
                 } else {
                     // The user failed to log in
-                    Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(LoginActivity.this, R.string.LoginFail, Toast.LENGTH_SHORT).show();
                 }
             }
         }.execute();
-
     }
 
 }

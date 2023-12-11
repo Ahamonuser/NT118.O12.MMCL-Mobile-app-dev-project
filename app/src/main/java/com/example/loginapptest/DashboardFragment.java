@@ -3,19 +3,22 @@ package com.example.loginapptest;
 import static java.lang.String.valueOf;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
+import android.app.Dialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -37,6 +40,21 @@ public class DashboardFragment extends Fragment {
 
     ArrayList<JsonObject> ObjectList = new ArrayList<>();
 
+    float rainfall;
+    float temperature_default;
+    int humidity_default;
+    String place;
+    float windSpeed;
+    float windDirection;
+    int AQI;
+    int AQI_Predict;
+    int CO2;
+    float humidity_Asset;
+    int PM10;
+    int PM25;
+    float temperature_DHT11;
+    int humidity_DHT11;
+
     View v;
 
     public DashboardFragment() {
@@ -54,14 +72,84 @@ public class DashboardFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        TextView MoreAsset = (TextView) v.findViewById(R.id.MoreAsset);
+        TextView MoreDefault = (TextView) v.findViewById(R.id.MoreDefault);
+        ImageView logout = (ImageView) v.findViewById(R.id.Logout_dash);
         // Lấy token từ bundle
         token = getArguments().getString("token");
         Log.d("Dashboard", token);
         Get_Id_API_Weather();
         Call_API_Weather();
+        MoreAsset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog = new Dialog(getContext());
+                dialog.requestWindowFeature(dialog.getWindow().FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.custom_dialog_box_asset);
+                Window window = dialog.getWindow();
+                if (window == null) {
+                    return;
+                }
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                window.setBackgroundDrawableResource(android.R.color.transparent);
+                WindowManager.LayoutParams layoutParams = window.getAttributes();
+                layoutParams.gravity = Gravity.CENTER;
+                window.setAttributes(layoutParams);
+                dialog.setCancelable(true);
+                TextView txt_CO2 = (TextView) dialog.findViewById(R.id.CO2_Asset);
+                TextView txt_AQI = (TextView) dialog.findViewById(R.id.AQI_Asset);
+                TextView txt_PM10 = (TextView) dialog.findViewById(R.id.PM10_Asset);
+                TextView txt_PM25 = (TextView) dialog.findViewById(R.id.PM25_Asset);
+                TextView txt_humidity = (TextView) dialog.findViewById(R.id.Humidity_Asset);
+                TextView txt_AQI_Predict = (TextView) dialog.findViewById(R.id.AQI_pre_Asset);
+                txt_CO2.setText(valueOf(CO2));
+                txt_AQI.setText(valueOf(AQI));
+                txt_PM10.setText(valueOf(PM10));
+                txt_PM25.setText(valueOf(PM25));
+                txt_humidity.setText(valueOf(humidity_Asset));
+                txt_AQI_Predict.setText(valueOf(AQI_Predict));
+                dialog.show();
+            }
+        });
+        MoreDefault.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog = new Dialog(getContext());
+                dialog.requestWindowFeature(dialog.getWindow().FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.custom_dialog_box_default);
+                Window window = dialog.getWindow();
+                if (window == null) {
+                    return;
+                }
+                window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                window.setBackgroundDrawableResource(android.R.color.transparent);
+                WindowManager.LayoutParams layoutParams = window.getAttributes();
+                layoutParams.gravity = Gravity.CENTER;
+                window.setAttributes(layoutParams);
+                dialog.setCancelable(true);
+                TextView txt_rainfall = (TextView) dialog.findViewById(R.id.Rainfall_Default);
+                TextView txt_temperature = (TextView) dialog.findViewById(R.id.Temperature_Default);
+                TextView txt_humidity = (TextView) dialog.findViewById(R.id.Humidity_Default);
+                TextView txt_place = (TextView) dialog.findViewById(R.id.Place_Default);
+                TextView txt_windSpeed = (TextView) dialog.findViewById(R.id.Wind_speed_Default);
+                TextView txt_windDirection = (TextView) dialog.findViewById(R.id.Wind_dir_Default);
+                txt_rainfall.setText(valueOf(rainfall));
+                txt_temperature.setText(valueOf(temperature_default));
+                txt_humidity.setText(valueOf(humidity_default));
+                txt_place.setText(place);
+                txt_windSpeed.setText(valueOf(windSpeed));
+                txt_windDirection.setText(valueOf(windDirection));
+                dialog.show();
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
         return v;
     }
-
 
     @SuppressLint("StaticFieldLeak")
     private void Get_Id_API_Weather() {
@@ -159,28 +247,16 @@ public class DashboardFragment extends Fragment {
             JsonObject place_att = attribute.get("place").getAsJsonObject();
             JsonObject windSpeed_att = attribute.get("windSpeed").getAsJsonObject();
             JsonObject windDirection_att = attribute.get("windDirection").getAsJsonObject();
-            float rainfall = rainfall_att.get("value").getAsFloat();
-            float temperature = temperature_att.get("value").getAsFloat();
-            int humidity = humidity_att.get("value").getAsInt();
-            String place = place_att.get("value").getAsString();
-            float windSpeed = windSpeed_att.get("value").getAsFloat();
-            float windDirection = windDirection_att.get("value").getAsFloat();
-            TextView txt_rainfall = (TextView) v.findViewById(R.id.Rainfall);
-            TextView txt_temperature = (TextView) v.findViewById(R.id.Temperature_Def);
-            TextView txt_humidity = (TextView) v.findViewById(R.id.Humidity_Def);
-            TextView txt_place = (TextView) v.findViewById(R.id.Place);
-            TextView txt_windSpeed = (TextView) v.findViewById(R.id.Windspeed);
-            TextView txt_windDirection = (TextView) v.findViewById(R.id.Winddirection);
-            txt_rainfall.setText(valueOf(rainfall));
-            txt_temperature.setText(valueOf(temperature));
-            txt_humidity.setText(valueOf(humidity));
+            rainfall = rainfall_att.get("value").getAsFloat();
+            temperature_default = temperature_att.get("value").getAsFloat();
+            humidity_default = humidity_att.get("value").getAsInt();
+            place = place_att.get("value").getAsString();
+            windSpeed = windSpeed_att.get("value").getAsFloat();
+            windDirection = windDirection_att.get("value").getAsFloat();
+            TextView txt_place = (TextView) v.findViewById(R.id.Place_dash);
+            TextView txt_windDirection = (TextView) v.findViewById(R.id.Wind_dir_dash);
             txt_place.setText(place);
-            txt_windSpeed.setText(valueOf(windSpeed));
             txt_windDirection.setText(valueOf(windDirection));
-            Log.d("Default Weather", "rainfall: " + rainfall + " mm");
-            Log.d("Default Weather", "temperature: " + temperature + " °C");
-            Log.d("Default Weather", "humidity: " + humidity + " %");
-            Log.d("Default Weather", "place: " + place);
         }
         else if (object.get("name").getAsString().equals("Weather Asset"))
         {
@@ -190,43 +266,27 @@ public class DashboardFragment extends Fragment {
             JsonObject humidity_att = attribute.get("humidity").getAsJsonObject();
             JsonObject PM10_att = attribute.get("PM10").getAsJsonObject();
             JsonObject PM25_att = attribute.get("PM25").getAsJsonObject();
-            int AQI = AQI_att.get("value").getAsInt();
-            int AQI_Predict = AQI_Predict_att.get("value").getAsInt();
-            int CO2 = CO2_att.get("value").getAsInt();
-            float humidity = humidity_att.get("value").getAsFloat();
-            int PM10 = PM10_att.get("value").getAsInt();
-            int PM25 = PM25_att.get("value").getAsInt();
-            TextView txt_AQI = (TextView) v.findViewById(R.id.AQI);
-            TextView txt_AQI_Predict = (TextView) v.findViewById(R.id.AQI_pre);
-            TextView txt_CO2 = (TextView) v.findViewById(R.id.CO2);
-            TextView txt_humidity = (TextView) v.findViewById(R.id.Humidity_WAsset);
-            TextView txt_PM10 = (TextView) v.findViewById(R.id.PM10);
-            TextView txt_PM25 = (TextView) v.findViewById(R.id.PM25);
+            AQI = AQI_att.get("value").getAsInt();
+            AQI_Predict = AQI_Predict_att.get("value").getAsInt();
+            CO2 = CO2_att.get("value").getAsInt();
+            humidity_Asset = humidity_att.get("value").getAsFloat();
+            PM10 = PM10_att.get("value").getAsInt();
+            PM25 = PM25_att.get("value").getAsInt();
+            TextView txt_AQI = (TextView) v.findViewById(R.id.AQI_dash);
+            TextView txt_CO2 = (TextView) v.findViewById(R.id.CO2_dash);
             txt_AQI.setText(valueOf(AQI));
-            txt_AQI_Predict.setText(valueOf(AQI_Predict));
             txt_CO2.setText(valueOf(CO2));
-            txt_humidity.setText(valueOf(humidity));
-            txt_PM10.setText(valueOf(PM10));
-            txt_PM25.setText(valueOf(PM25));
-            Log.d("Weather Asset", "AQI: " + AQI);
-            Log.d("Weather Asset", "AQI_Predict: " + AQI_Predict);
-            Log.d("Weather Asset", "CO2: " + CO2);
-            Log.d("Weather Asset", "humidity: " + humidity + " %");
-            Log.d("Weather Asset", "PM10: " + PM10);
-            Log.d("Weather Asset", "PM25: " + PM25);
         }
         else if (object.get("name").getAsString().equals("DHT11 Asset")) //DHT11 Asset
         {
             JsonObject temperature_att = attribute.get("temperature").getAsJsonObject();
             JsonObject humidity_att = attribute.get("humidity").getAsJsonObject();
-            float temperature = temperature_att.get("value").getAsFloat();
-            int humidity = humidity_att.get("value").getAsInt();
-            TextView txt_temperature = (TextView) v.findViewById(R.id.Temperature_DHT11);
-            TextView txt_humidity = (TextView) v.findViewById(R.id.Humidity_DHT11);
-            txt_temperature.setText(valueOf(temperature));
-            txt_humidity.setText(valueOf(humidity));
-            Log.d("DHT11 Asset", "temperature: " + temperature + " °C");
-            Log.d("DHT11 Asset", "humidity: " + humidity + " %");
+            temperature_DHT11 = temperature_att.get("value").getAsFloat();
+            humidity_DHT11 = humidity_att.get("value").getAsInt();
+            TextView txt_temperature = (TextView) v.findViewById(R.id.Temperature_DHT11_dash);
+            TextView txt_humidity = (TextView) v.findViewById(R.id.Humidity_DHT11_dash);
+            txt_temperature.setText(valueOf(temperature_DHT11));
+            txt_humidity.setText(valueOf(humidity_DHT11));
         }
     }
 }

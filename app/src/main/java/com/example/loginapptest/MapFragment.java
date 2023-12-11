@@ -1,7 +1,10 @@
 package com.example.loginapptest;
 
+import static java.lang.String.valueOf;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
@@ -11,9 +14,14 @@ import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -46,6 +54,8 @@ public class MapFragment extends Fragment {
     float temperature;
     int humidity;
     String place;
+    float windSpeed;
+    float windDirection;
     int Brightness;
     int ColourTemperature;
     String Email;
@@ -81,27 +91,69 @@ public class MapFragment extends Fragment {
         Call_API_Default_Weather();
         Call_API_Light();
         marker.setOnMarkerClickListener((marker, mapView) -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setMessage("Place: " + place + "\n" + "Rainfall: " + rainfall + "mm\n" + "Temperature: " + temperature + "°C\n" + "Humidity: " + humidity + "%");
-            builder.setTitle("Default Weather");
-            builder.setCancelable(false);
-            builder.setNeutralButton("OK", (DialogInterface.OnClickListener) (dialog, which) -> {
-                dialog.cancel();
-            });
-            AlertDialog alertDialog = builder.create();
-            alertDialog.show();
+            Dialog dialog = new Dialog(getContext());
+            dialog.requestWindowFeature(dialog.getWindow().FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.custom_dialog_box_default);
+            Window window = dialog.getWindow();
+            if (window == null) {
+                return false;
+            }
+            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            window.setBackgroundDrawableResource(android.R.color.transparent);
+            WindowManager.LayoutParams layoutParams = window.getAttributes();
+            layoutParams.gravity = Gravity.CENTER;
+            window.setAttributes(layoutParams);
+            dialog.setCancelable(true);
+            TextView txt_rainfall = (TextView) dialog.findViewById(R.id.Rainfall_Default);
+            TextView txt_temperature = (TextView) dialog.findViewById(R.id.Temperature_Default);
+            TextView txt_humidity = (TextView) dialog.findViewById(R.id.Humidity_Default);
+            TextView txt_place = (TextView) dialog.findViewById(R.id.Place_Default);
+            TextView txt_windSpeed = (TextView) dialog.findViewById(R.id.Wind_speed_Default);
+            TextView txt_windDirection = (TextView) dialog.findViewById(R.id.Wind_dir_Default);
+            txt_rainfall.setText(valueOf(rainfall));
+            txt_temperature.setText(valueOf(temperature));
+            txt_humidity.setText(valueOf(humidity));
+            txt_place.setText(place);
+            txt_windSpeed.setText(valueOf(windSpeed));
+            txt_windDirection.setText(valueOf(windDirection));
+            dialog.show();
             return true;
         });
         marker2.setOnMarkerClickListener((marker, mapView) -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setMessage("Email: " + Email + "\n" + "Brightness: " + Brightness + "%\n" + "Colour Temperature(K): " + ColourTemperature + "\n" + "On/Off: " + OnOff);
-            builder.setTitle("Light");
-            builder.setCancelable(false);
-            builder.setNeutralButton("OK", (DialogInterface.OnClickListener) (dialog, which) -> {
-                dialog.cancel();
-            });
-            AlertDialog alertDialog = builder.create();
-            alertDialog.show();
+            Dialog dialog = new Dialog(getContext());
+            dialog.requestWindowFeature(dialog.getWindow().FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.custom_dialog_box_light);
+            Window window = dialog.getWindow();
+            if (window == null) {
+                return false;
+            }
+            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            window.setBackgroundDrawableResource(android.R.color.transparent);
+            WindowManager.LayoutParams layoutParams = window.getAttributes();
+            layoutParams.gravity = Gravity.CENTER;
+            window.setAttributes(layoutParams);
+            dialog.setCancelable(true);
+            TextView txt_brightness = (TextView) dialog.findViewById(R.id.Brightness);
+            TextView txt_colourTemperature = (TextView) dialog.findViewById(R.id.Colour_Temperature);
+            TextView txt_email = (TextView) dialog.findViewById(R.id.Email_light);
+            TextView txt_onOff = (TextView) dialog.findViewById(R.id.On_Off);
+            txt_brightness.setText(valueOf(Brightness));
+            txt_colourTemperature.setText(valueOf(ColourTemperature));
+            txt_email.setText(Email);
+            boolean lightstatus = OnOff;
+            ImageView img = (ImageView) dialog.findViewById(R.id.On_Off_image);
+            if (lightstatus == true)
+            {
+                txt_onOff.setText("ON");
+                img.setImageResource(R.drawable.baseline_light_mode_65);
+            }
+            else
+            {
+                txt_onOff.setText("OFF");
+                img.setImageResource(R.drawable.baseline_dark_mode_65);
+            }
+
+            dialog.show();
             return true;
         });
         return v;
@@ -231,10 +283,14 @@ public class MapFragment extends Fragment {
         JsonObject temperature_att = attribute.get("temperature").getAsJsonObject();
         JsonObject humidity_att = attribute.get("humidity").getAsJsonObject();
         JsonObject place_att = attribute.get("place").getAsJsonObject();
+        JsonObject windSpeed_att = attribute.get("windSpeed").getAsJsonObject();
+        JsonObject windDirection_att = attribute.get("windDirection").getAsJsonObject();
         rainfall = rainfall_att.get("value").getAsFloat();
         temperature = temperature_att.get("value").getAsFloat();
         humidity = humidity_att.get("value").getAsInt();
         place = place_att.get("value").getAsString();
+        windSpeed = windSpeed_att.get("value").getAsFloat();
+        windDirection = windDirection_att.get("value").getAsFloat();
     }
 
     private void Get_Light_Value(JsonObject object)

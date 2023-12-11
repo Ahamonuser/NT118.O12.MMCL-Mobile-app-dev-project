@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/custom_green_color">
+
+    <RelativeLayout
+        android:id="@+id/Light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/Light_Asset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:text="Light"
+            android:textColor="@color/green"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            />
+
+        <ImageView
+            android:id="@+id/Colour_Temperature_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Brightness"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/baseline_thermostat_24" />
+
+        <TextView
+            android:id="@+id/Colour_Temperature_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Brightness"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/Colour_Temperature_image"
+            android:layout_marginTop="10dp"
+            android:text="@string/Colour_Temperature"
+            android:textColor="@color/pink"
+            android:textSize="20dp" />
+
+
+        <TextView
+            android:id="@+id/Colour_Temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Colour_Temperature_txt"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="11dp"
+            android:layout_toRightOf="@id/Colour_Temperature_image"
+            android:text="null"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/Brightness_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Light_Asset"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/baseline_lightbulb_24" />
+
+        <TextView
+            android:id="@+id/Brightness_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Light_Asset"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/Colour_Temperature_image"
+            android:layout_marginTop="10dp"
+            android:text="@string/Brightness"
+            android:textColor="@color/pink"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Brightness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Brightness_txt"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/Colour_Temperature_image"
+            android:text="null"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/On_Off_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_light_mode_65"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/Email_light"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="8dp"
+            />
+
+        <TextView
+            android:id="@+id/On_Off_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Email_light"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/Colour_Temperature_image"
+            android:layout_marginTop="10dp"
+            android:text="@string/On_Off"
+            android:textColor="@color/pink"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/On_Off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/On_Off_txt"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/Colour_Temperature_image"
+            android:layout_marginTop="10dp"
+            android:text="null"
+            android:textColor="@color/white"
+            android:paddingBottom="10dp"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/Email_light_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_email_65"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/Colour_Temperature"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/Email_light_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/Colour_Temperature_image"
+            android:layout_below="@id/Colour_Temperature"
+            android:layout_marginTop="10dp"
+            android:text="Email"
+            android:textColor="@color/pink"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Email_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Email_light_txt"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/Colour_Temperature_image"
+            android:layout_marginTop="10dp"
+            android:text="null"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
+</RelativeLayout>

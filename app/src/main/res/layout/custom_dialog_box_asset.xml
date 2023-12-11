@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/custom_green_color">
+
+    <RelativeLayout
+        android:id="@+id/Asset1Full"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/Weather_Asset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:text="Weather Asset"
+            android:textColor="@color/green"
+            android:textSize="22dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/AQI_pre_Asset_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/prediction"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/AQI_Asset"
+            android:layout_marginTop="10dp"
+            />
+        <TextView
+            android:id="@+id/AQI_pre_Asset_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/AQI_Asset"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/CO2_Asset_image"
+            android:layout_marginTop="10dp"
+            android:text="@string/AQI_pre"
+            android:textColor="@color/pink"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/AQI_pre_Asset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/AQI_pre_Asset_txt"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/CO2_Asset_image"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="null"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/CO2_Asset_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Humidity_Asset"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/co2" />
+
+        <TextView
+            android:id="@+id/C02_Asset_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Humidity_Asset"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/CO2_Asset_image"
+            android:layout_marginTop="10dp"
+            android:text="CO2"
+            android:textColor="@color/pink"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/CO2_Asset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/C02_Asset_txt"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="11dp"
+            android:layout_toRightOf="@id/CO2_Asset_image"
+            android:text="null"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/Humidity_Asset_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Weather_Asset"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/humidity" />
+
+        <TextView
+            android:id="@+id/Humidity_Asset_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Weather_Asset"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/CO2_Asset_image"
+            android:layout_marginTop="10dp"
+            android:text="@string/Humidity_dash"
+            android:textColor="@color/pink"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Humidity_Asset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Humidity_Asset_txt"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/CO2_Asset_image"
+            android:text="null"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/PM25_Asset_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pm25"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/PM10_Asset_image"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/PM25_Asset_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/PM10_Asset_image"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/CO2_Asset_image"
+            android:layout_marginTop="10dp"
+            android:text="PM25"
+            android:textColor="@color/pink"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/PM25_Asset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/PM25_Asset_txt"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/CO2_Asset_image"
+            android:layout_marginTop="10dp"
+            android:text="null"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/AQI_Asset_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/aqi"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/PM25_Asset"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/AQI_Asset_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/PM25_Asset"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/CO2_Asset_image"
+            android:layout_marginTop="10dp"
+            android:text="AQI"
+            android:textColor="@color/pink"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/AQI_Asset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/AQI_Asset_txt"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/CO2_Asset_image"
+            android:layout_marginTop="10dp"
+            android:text="null"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/PM10_Asset_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pm10"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/CO2_Asset_image"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/PM10_Asset_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/CO2_Asset_image"
+            android:layout_below="@id/CO2_Asset_image"
+            android:layout_marginTop="10dp"
+            android:text="PM10"
+            android:textColor="@color/pink"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/PM10_Asset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/PM10_Asset_txt"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/CO2_Asset_image"
+            android:layout_marginTop="10dp"
+            android:text="null"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
+</RelativeLayout>

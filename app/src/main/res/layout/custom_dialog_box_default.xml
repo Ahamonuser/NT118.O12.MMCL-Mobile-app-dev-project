@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/custom_green_color">
+
+    <RelativeLayout
+        android:id="@+id/Asset3Full"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/Default_Weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:text="Default Weather"
+            android:textColor="@color/green"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            />
+
+        <ImageView
+            android:id="@+id/Place_Default_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/place"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/Rainfall_Default"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/Place_Default_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Rainfall_Default"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/Wind_dir_Default_image"
+            android:layout_marginTop="10dp"
+            android:text="@string/Place"
+            android:textColor="@color/pink"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Place_Default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Place_Default_txt"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/Wind_dir_Default_image"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="null"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/Wind_dir_Default_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Humidity_Default"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/wind_direct" />
+
+        <TextView
+            android:id="@+id/Wind_dir_Default_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Humidity_Default"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/Wind_dir_Default_image"
+            android:layout_marginTop="10dp"
+            android:text="@string/Wind_Direction"
+            android:textColor="@color/pink"
+            android:textSize="20dp" />
+
+
+        <TextView
+            android:id="@+id/Wind_dir_Default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Wind_dir_Default_txt"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="11dp"
+            android:layout_toRightOf="@id/Wind_dir_Default_image"
+            android:text="null"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/Humidity_Default_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Default_Weather"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/humidity" />
+
+        <TextView
+            android:id="@+id/Humidity_Default_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Default_Weather"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/Wind_dir_Default_image"
+            android:layout_marginTop="10dp"
+            android:text="@string/Humidity_dash"
+            android:textColor="@color/pink"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Humidity_Default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Humidity_Default_txt"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/Wind_dir_Default_image"
+            android:text="null"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/Temperature_Default_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/temperature"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/Wind_speed_Default"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/Temperature_Default_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Wind_speed_Default"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/Wind_dir_Default_image"
+            android:layout_marginTop="10dp"
+            android:text="@string/Temperature_dash"
+            android:textColor="@color/pink"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Temperature_Default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Temperature_Default_txt"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/Wind_dir_Default_image"
+            android:layout_marginTop="10dp"
+            android:text="null"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/Rainfall_Default_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/rainfall"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/Temperature_Default"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/Rainfall_Default_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Temperature_Default"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/Wind_dir_Default_image"
+            android:layout_marginTop="10dp"
+            android:text="@string/Rainfall_dash"
+            android:textColor="@color/pink"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Rainfall_Default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Rainfall_Default_txt"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/Wind_dir_Default_image"
+            android:layout_marginTop="10dp"
+            android:text="null"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/Wind_speed_Default_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/wind_speed"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/Wind_dir_Default"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:id="@+id/Wind_speed_Default_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/Wind_dir_Default_image"
+            android:layout_below="@id/Wind_dir_Default"
+            android:layout_marginTop="10dp"
+            android:text="@string/Wind_Speed_dash"
+            android:textColor="@color/pink"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/Wind_speed_Default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Wind_speed_Default_txt"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/Wind_dir_Default_image"
+            android:layout_marginTop="10dp"
+            android:text="null"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
+</RelativeLayout>

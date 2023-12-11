@@ -22,12 +22,12 @@
     <string name="Last_Name">Họ</string>
     <string name="Language">Ngôn ngữ</string>
     <string name="Log_Out">[Thoát]</string>
-    <string name="Humidity">Độ ẩm(%)</string>
-    <string name="Temperature">Nhiệt độ(°C)</string>
+    <string name="Humidity_dash">>Độ ẩm(%)</string>
+    <string name="Temperature_dash">Nhiệt độ(°C)</string>
     <string name="AQI_pre">Dự đoán AQI</string>
     <string name="Place">Địa điểm</string>
-    <string name="Rainfall">Lượng mưa(mm)</string>
-    <string name="Wind_Speed">Tốc độ gió(km/h)</string>
+    <string name="Rainfall_dash">Lượng mưa (mm)</string>
+    <string name="Wind_Speed_dash">Tốc độ gió(km/h)</string>
     <string name="Wind_Direction">Hướng gió</string>
     <string name="chart">Biểu đồ</string>
     <string name="select_asset_name">Chọn tên asset</string>
@@ -36,4 +36,17 @@
     <string name="start_time">Thời gian bắt đầu</string>
     <string name="end_time">Thời gian kết thúc</string>
     <string name="Show_graph">XEM BIỂU ĐỒ</string>
+    <string name="Choose_lang">Chọn ngôn ngữ</string>
+    <string name="English">Tiếng anh</string>
+    <string name="Vietnamese">Tiếng việt</string>
+    <string name="LoginFail">Đăng nhập thất bại</string>
+    <string name="LoginSuccess">Đăng nhập thành công</string>
+    <string name="Temperature">Nhiệt độ</string>
+    <string name="Humidity">Độ ẩm</string>
+    <string name="Rainfall">Lượng mưa</string>
+    <string name="Wind_Speed">Tốc độ gió</string>
+    <string name="Brightness">Độ sáng(%)</string>
+    <string name="Colour_Temperature">Nhiệu độ màu(K)</string>
+    <string name="On_Off">Bật/Tắt</string>
+    <string name="More">Xem thêm>>></string>
 </resources>

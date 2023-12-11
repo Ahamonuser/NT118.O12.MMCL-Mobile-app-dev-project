@@ -13,12 +13,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -45,6 +48,7 @@ import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
@@ -60,15 +64,36 @@ public class SuccessActivityResult extends AppCompatActivity {
     ArrayList<String> IDArrayList = new ArrayList<>();
     String token = "";
 
+    private void loadLocale(){
+        SharedPreferences prefs = this.getSharedPreferences("Settings", MODE_PRIVATE);
+        String language = prefs.getString("My_Lang", "");
+        setLocated(language);
+    }
+
+    private void setLocated(String lang){
+        Resources resources = this.getBaseContext().getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        Configuration config = resources.getConfiguration();
+        Locale locale = new Locale(lang);
+        config.setLocale(locale);
+        Locale.setDefault(locale);
+        resources.updateConfiguration(config, metrics);
+        SharedPreferences.Editor editor = this.getSharedPreferences("Settings", MODE_PRIVATE).edit();
+        editor.putString("My_Lang", lang);
+        editor.apply();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_success_result);
+        loadLocale();
         token = getIntent().getStringExtra("token");
+
         //Tạo thread để lấy dữ liệu từ API khi không mở app
         Thread serviceThread = new Thread(new MyService());
         // Bắt đầu chạy thread
-        //serviceThread.start();
+        serviceThread.start();
 
         // Tạo thread để luôn mở database để sử dụng app inspector
         // -> chỉ để bật chứng minh có lưu database -> không cần thiết

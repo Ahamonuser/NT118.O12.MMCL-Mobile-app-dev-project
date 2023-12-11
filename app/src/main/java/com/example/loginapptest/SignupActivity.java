@@ -4,8 +4,12 @@ import static android.content.ContentValues.TAG;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -15,6 +19,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Locale;
+
 public class SignupActivity extends AppCompatActivity {
 
     String signun_url = "https://uiot.ixxc.dev";
@@ -22,6 +28,7 @@ public class SignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        loadLocale();
 
         //Setup
         Button signup = (Button)findViewById(R.id.signup_activity_btn);
@@ -82,15 +89,30 @@ public class SignupActivity extends AppCompatActivity {
 
             });
         });
-
-
-
         //Back to homepage
-        TextView backhomepage = (TextView) findViewById(R.id.back_btn);
+        TextView backhomepage = (TextView) findViewById(R.id.back);
         backhomepage.setOnClickListener(view -> {
             Intent backtohome = new Intent(SignupActivity.this, HomeActivity.class);
             startActivity(backtohome);
         });
     }
 
+    private void loadLocale(){
+        SharedPreferences prefs = this.getSharedPreferences("Settings", MODE_PRIVATE);
+        String language = prefs.getString("My_Lang", "");
+        setLocated(language);
+    }
+
+    private void setLocated(String lang){
+        Resources resources = this.getBaseContext().getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        Configuration config = resources.getConfiguration();
+        Locale locale = new Locale(lang);
+        config.setLocale(locale);
+        Locale.setDefault(locale);
+        resources.updateConfiguration(config, metrics);
+        SharedPreferences.Editor editor = this.getSharedPreferences("Settings", MODE_PRIVATE).edit();
+        editor.putString("My_Lang", lang);
+        editor.apply();
+    }
 }
