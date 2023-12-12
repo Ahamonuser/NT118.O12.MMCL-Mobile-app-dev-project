@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         // When click back button
-        TextView back = findViewById(R.id.back_login);
+        TextView back = findViewById(R.id.back_btn);
         back.setOnClickListener(view -> {
             Intent Back = new Intent(LoginActivity.this, HomeActivity.class);
             startActivity(Back);

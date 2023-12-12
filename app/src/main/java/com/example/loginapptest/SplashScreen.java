@@ -7,7 +7,9 @@ import android.os.Looper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SplashScreen extends AppCompatActivity {
+public class
+
+SplashScreen extends AppCompatActivity {
 
 
 

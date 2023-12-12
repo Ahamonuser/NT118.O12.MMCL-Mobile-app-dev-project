@@ -8,24 +8,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/background"
+    android:background="@drawable/image"
     android:id="@+id/bg"
     tools:context=".LoginActivity">
 
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="237dp"
+        android:layout_height="188dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/icon" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_margin="40dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp"
         android:background="@drawable/edit_text_custom">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="401dp"
+            android:layout_width="331dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@color/cards_background"
+            android:background="@color/main_color"
             android:orientation="vertical"
             android:padding="24dp">
 
@@ -35,8 +41,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/Login"
                 android:textAlignment="center"
-                android:textColor="@color/blue"
-                android:textSize="36sp"
+                android:textColor="@color/white"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -45,13 +51,14 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/edit_text_custom"
+                android:backgroundTint="#2E2E3E"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:hint="@string/Username"
-                android:text="user"
                 android:padding="8dp"
-                android:textColor="@color/black"
-                android:textColorHighlight="@color/cardview_dark_background" />
+                android:textColor="@color/white"
+                android:textColorHighlight="@color/cardview_dark_background"
+                android:textColorHint="@color/white" />
 
             <EditText
                 android:id="@+id/password_login_txt"
@@ -59,37 +66,39 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/edit_text_custom"
+                android:backgroundTint="#2E2E3E"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
                 android:hint="@string/Password"
-                android:text="123"
                 android:inputType="textPassword"
                 android:padding="8dp"
-                android:textColor="@color/black"
-                android:textColorHighlight="@color/cardview_dark_background" />
+                android:textColor="@color/white"
+                android:textColorHighlight="@color/cardview_dark_background"
+                android:textColorHint="@color/white" />
 
             <!--             create back text view -->
             <Button
                 android:id="@+id/login_btn"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/custom_green_color"
+                android:background="@drawable/custom_lavender"
                 android:text="@string/Login"
-                android:textSize="25dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
-            <TextView
-                android:id="@+id/back_login"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/back_btn"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/white_button"
                 android:text="@string/Back"
-                android:textColor="@color/blue"
-                android:textSize="18sp"
-                android:textStyle="italic"
-                />
-
+                android:textColor="@color/lavender"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
 
 
         </LinearLayout>
@@ -99,10 +108,10 @@
         android:id="@+id/signup_login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:padding="8dp"
         android:text="@string/LogintoRegister"
         android:textAlignment="center"
-        android:textColor="@color/blue"
-        android:textSize="14sp" />
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold" />
 </LinearLayout>
